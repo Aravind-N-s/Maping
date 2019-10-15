@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from '../../Config/axios'
 import { withRouter } from "react-router";
+import {Redirect} from 'react-router-dom'
 
 class Login extends React.Component{
     constructor(){
         super()
         this.state = {
             email : '',
-            password: ''
+            password: '',
+            Login: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,6 +36,7 @@ class Login extends React.Component{
                 const token=response.data.token
                 if(token){
                     localStorage.setItem('Authorization',token)
+                    this.setState(() => ({Login: true}))
                     this.props.history.push('/')
                 }
             }

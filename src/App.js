@@ -52,7 +52,16 @@ class App extends React.Component{
             </div>
           )}
           {!this.state.isAuth && (
-            <Login/>
+            <div>
+              <NavLink to="/login">Login</NavLink>
+            <Switch>
+              <Route exact strict path="/login" render={(props) => {
+                return <Login {...props}/>
+              }}/>
+            </Switch>
+            </div>
+            
+            
           )}
         </BrowserRouter>
       </div>
